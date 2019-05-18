@@ -8,5 +8,6 @@ public class text2 {
         for (int x=0;x<data.length;x++){
             System.out.println(data[x]);
         }
+
     }
 }
