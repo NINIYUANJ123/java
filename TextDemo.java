@@ -1,34 +1,24 @@
-class  Book{
-    private String title ;
-    private double price ;
+package thread;
 
-    public void setTitle(String tit) {
-        this.title = tit ;
+class MyThread extends Thread {     //  或者 implements Runnable  两种方法
+    private String name ;
+    public MyThread(String name) {
+        this.name = name ;
     }
-
-    public void setPrice(double pri) {
-        this.price = pri ;
+    @Override
+    public void run() {
+        for (int x = 0 ; x < 200 ; x ++) {
+            System.out.println(this.name + " --> " + x);
+        }
     }
-
-    public String getTitle() {
-        return title ;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void getInfo(){
-        System.out.println("图书名称: " + title + ",价格:" + price) ;
-    }
-
 }
-
 public class TextDemo {
     public static void main(String[] args) {
-        Book b= new Book()  ;
-        b.setTitle("java开发项目") ;
-        b.setPrice(99) ;
-        b.getInfo() ;
+        MyThread mt1 = new MyThread("线程A") ;
+        MyThread mt2 = new MyThread("线程B") ;
+        MyThread mt3 = new MyThread("线程C") ;
+        mt1.start();
+        mt2.start();
+        mt3.start();
     }
 }
